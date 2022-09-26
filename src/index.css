@@ -1,0 +1,541 @@
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100;200;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Advent Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+code {
+  font-family: "Advent Pro", source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+
+@layer components {
+  #login-section .form-group label,
+  #Register-section .form-group label {
+    @apply text-white font-bold text-lg font-advent;
+  }
+
+  .twitter-signup {
+    @apply w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full bg-blue-500 flex items-center justify-center hover:cursor-pointer hover:ring ring-blue-500 ring-offset-2;
+  }
+
+  .google-signup {
+    @apply w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full bg-white flex items-center justify-center hover:cursor-pointer hover:ring ring-red-600 ring-offset-2;
+  }
+
+  .facebook-signup {
+    @apply w-[50px] h-[50px] md:w-[60px] md:h-[60px] rounded-full bg-blue-700 flex items-center justify-center hover:cursor-pointer hover:ring ring-blue-700 ring-offset-2;
+  }
+
+  .recipient-message-box {
+    @apply bg-gray-100 p-5 w-max rounded-tr-xl rounded-bl-xl rounded-br-xl max-w-[80%];
+  }
+
+  .sender-message-box {
+    @apply p-5 w-max rounded-tr-xl rounded-bl-xl rounded-br-xl bg-secondaryColor text-white max-w-[80%];
+  }
+
+  .send-message-form {
+    @apply border-t border-gray-200 absolute bottom-0 w-full flex items-center justify-between;
+  }
+
+  .user-chat {
+    @apply flex items-center justify-between p-[10px] md:p-[2px] xl:p-[10px] hover:cursor-pointer hover:bg-gray-100;
+  }
+
+  .removeImageBtn {
+    @apply absolute bg-gray-800 border border-gray-300 rounded-full p-1 right-1 top-1;
+  }
+
+  .image-container {
+    @apply max-w-[150px] mb-2 overflow-hidden rounded-lg relative;
+  }
+
+  .file-Upload-Container {
+    @apply flex items-center flex-wrap max-h-[150px] overflow-y-auto w-full space-x-2 p-3 border border-gray-200 rounded-lg relative bottom-[53px];
+  }
+
+  .add-contact-btn {
+    @apply flex items-center px-4 py-2 bg-primaryColor text-white font-medium rounded-lg box-border border border-primaryColor;
+  }
+
+  .import-contact-btn {
+    @apply flex items-center px-4 py-2 border border-primaryColor bg-white text-primaryColor font-medium rounded-lg box-border;
+  }
+
+  .category-info {
+    @apply flex items-center space-x-2 py-2 px-3 hover:cursor-pointer hover:bg-gray-100;
+  }
+
+  .category-info.active {
+    @apply bg-gray-100 text-primaryColor;
+  }
+
+  #Contact-List table tbody tr {
+    @apply border-b border-gray-200 cursor-pointer hover:bg-gray-100;
+  }
+
+  #Contact-List table tbody tr td {
+    @apply py-3 px-2 align-middle md:text-center;
+  }
+
+  #Contact-List table thead tr th {
+    @apply bg-gray-100 px-2 py-3 border border-gray-300;
+  }
+
+  #Recent-Calls-List table tbody tr {
+    @apply border-b border-gray-200 cursor-pointer hover:bg-gray-100;
+  }
+
+  #Recent-Calls-List table tbody tr td {
+    @apply py-3 px-2 align-middle md:text-center;
+  }
+
+  #Recent-Calls-List table thead tr th {
+    @apply bg-gray-100 px-2 py-3 border border-gray-300;
+  }
+
+  #favorite-Contact-Table table tbody tr {
+    @apply border-b border-gray-200 cursor-pointer hover:bg-gray-100;
+  }
+
+  #favorite-Contact-Table table tbody tr td {
+    @apply py-3 px-2 align-middle md:text-center;
+  }
+
+  #favorite-Contact-Table table thead tr th {
+    @apply bg-gray-100 px-2 py-3 border border-gray-300;
+  }
+
+  .btn-dropdown .dropdown-menu {
+    @apply bg-white absolute top-[40px] z-10 min-w-[150px] w-max py-4 px-2 left-[-120px] shadow-lg text-left list-none rounded-lg;
+  }
+
+  .btn-dropdown .dropdown-menu .dropdown-item {
+    @apply px-2 py-2 cursor-pointer hover:bg-gray-100;
+  }
+
+  .recipient-information-container {
+    @apply border-l border-gray-200 flex flex-col items-center px-5 py-7;
+  }
+
+  .contact-view {
+    @apply border-l border-gray-200 flex flex-col items-center px-5 relative;
+  }
+
+  .primary-action {
+    @apply bg-primaryColor w-[40px] h-[40px] rounded-full flex items-center justify-center;
+  }
+
+  .secondary-action {
+    @apply border border-primaryColor bg-transparent w-[40px] h-[40px] rounded-full flex items-center justify-center;
+  }
+
+  .close-contact-view {
+    @apply border border-gray-400 bg-transparent w-[35px] h-[35px] rounded-full flex items-center justify-center top-0 right-0 hover:bg-gray-200 hover:text-white;
+  }
+
+  #Mobile-Contact-List .mobile-contact-info {
+    @apply flex items-center space-x-4 px-4 py-3 cursor-pointer hover:bg-gray-100;
+  }
+
+  #mobile-call-list .mobile-contact-info {
+    @apply flex items-center justify-between w-full space-x-4 px-4 py-3 cursor-pointer hover:bg-gray-100;
+  }
+
+  #favorite-card-list .mobile-contact-info {
+    @apply flex items-center justify-between w-full space-x-4 px-4 py-3 cursor-pointer hover:bg-gray-100;
+  }
+
+  #Add-Contact-Section .form-content input,
+  #Add-Contact-Section .form-content select,
+  #Add-Contact-Section .form-content textarea {
+    @apply border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-300 focus:ring-offset-2 w-full;
+  }
+
+  #Add-Contact-Section .form-content {
+    @apply grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-0 sm:gap-x-0 md:gap-x-3 lg:gap-x-5 w-[100%] sm:w-[100%] md:w-[90%] lg:w-[80%] px-4 mx-auto mt-5 max-h-[300px] overflow-y-auto;
+  }
+
+  #Add-Contact-Section .form-content label {
+    @apply text-gray-600 flex items-center gap-x-1 mb-1;
+  }
+}
+
+@layer utilities {
+  .bg-gradient {
+    background: linear-gradient(
+      134.6deg,
+      rgba(201, 37, 107, 1) 15.4%,
+      rgba(116, 16, 124, 1) 74.7%
+    );
+  }
+
+  .white-shadow {
+    box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+  }
+
+  .form-group {
+    @apply flex flex-col items-start space-y-2 mb-3 w-full;
+  }
+
+  .form-control {
+    @apply w-full h-12 px-4 border border-primaryColor-light text-white hover:outline-none focus:outline-none focus:bg-transparent active:bg-transparent;
+  }
+
+  .form-control::placeholder {
+    @apply text-slate-200;
+  }
+
+  .btn-block {
+    @apply w-full focus:ring ring-primaryColor-light;
+  }
+
+  .chat-search-control {
+    @apply w-full border-none rounded-full focus:border-none active:border-none focus:outline focus:outline-white bg-gray-100 h-12 pl-[55px] pr-4;
+  }
+
+  .search-contact-container input {
+    @apply w-full mx-auto border-none rounded-full focus:border-none active:border-none focus:outline focus:outline-white bg-gray-100 h-12 pl-[55px] pr-4;
+  }
+
+  .search-contact-container input::placeholder {
+    @apply tracking-wide;
+  }
+}
+
+#Register-section {
+  width: 100%;
+  background: url("./assets/images/vecteezy_modern-futuristic-neon-purple-background_.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#Register-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background: linear-gradient(
+    134.6deg,
+    rgb(201 37 107 / 85%) 15.4%,
+    rgb(116 16 124 / 88%) 74.7%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+#Register-section .form-control {
+  background: transparent;
+}
+
+#Register-section .register-form {
+  position: relative;
+  z-index: 3;
+}
+
+#login-section {
+  background: url("./assets/images/vecteezy_modern-futuristic-neon-purple-background_.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+#login-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background: linear-gradient(
+    300deg,
+    rgb(201 37 107 / 91%) 15.4%,
+    rgb(116 16 124 / 78%) 74.7%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+#login-section .login-form {
+  position: relative;
+  z-index: 3;
+}
+
+#Navigation-section .nav-link {
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+#Navigation-section .nav-link.active {
+  background: linear-gradient(
+    134.6deg,
+    rgba(201, 37, 107, 1) 15.4%,
+    rgba(116, 16, 124, 1) 74.7%
+  );
+  color: #fff;
+}
+
+#chat-section {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-areas: "chat-page-title chat-page-title" "user-chat-list chat-box";
+  padding: 40px 0;
+  column-gap: 30px;
+}
+
+#chat-section .user-chat-list {
+  grid-area: user-chat-list;
+}
+
+#chat-section .chat-box {
+  grid-area: chat-box;
+  background: rgb(255 255 255);
+  box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+  border-radius: 20px;
+}
+
+#chat-section .chat-page-title {
+  grid-area: chat-page-title;
+}
+
+#chat-section .chat-list-card {
+  background: rgb(255 255 255);
+  box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#chat-section .container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-areas: "chat-box-container recipient-information-container";
+}
+
+#chat-section .container .chat-box-container {
+  grid-area: chat-box-container;
+}
+
+#chat-section .container .recipient-information-container {
+  grid-area: recipient-information-container;
+}
+
+.send-message-form {
+  width: -webkit-fill-available;
+  padding: 10px 21px;
+}
+
+#Mobile-footer-section {
+  background: linear-gradient(145deg, #e2e8ec, #ffffff);
+}
+
+#Mobile-footer-section .bottom-nav-link a {
+  padding: 8px 20px;
+}
+
+#Mobile-footer-section .bottom-nav-link a.active {
+  box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #d1d9e6;
+  border-radius: 10px;
+  color: theme("colors.primaryColor");
+}
+
+#AddFloatingButton {
+  background: linear-gradient(
+    134.6deg,
+    rgba(201, 37, 107, 1) 15.4%,
+    rgba(116, 16, 124, 1) 74.7%
+  );
+  right: 20px;
+  bottom: 100px;
+  z-index: 15;
+}
+
+.emoji-picker-react {
+  width: 100% !important;
+  top: -54px !important;
+}
+
+.file-Upload-Container {
+  background: linear-gradient(145deg, #e2e8ec, #ffffff);
+  box-shadow: -5px -5px 15px #ffffff, 5px 5px 15px #d1d9e6;
+}
+
+#Contact-Category .contact-category-card {
+  background: linear-gradient(145deg, #e2e8ec, #ffffff);
+  box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: "Contact-Category Contact-List";
+  column-gap: 30px;
+}
+
+#Contact-Category {
+  grid-area: Contact-Category;
+}
+
+#Contact-List {
+  grid-area: Contact-List;
+}
+
+#tablet-contact-view {
+  display: none;
+}
+
+#tablet-contact-view .contact-info-card {
+  background: linear-gradient(145deg, #e2e8ec, #ffffff);
+  box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+  border-radius: 0;
+  padding: 40px 30px;
+}
+
+#tablet-contact-view .contact-info-card.close {
+  animation: slideRight 0.3s ease-in forwards;
+}
+
+#tablet-contact-view.close {
+  animation: hide 0.3s ease-in forwards 0.3s;
+}
+
+#Add-Contact-Section {
+  background: rgba(255, 255, 255, 0.508);
+  backdrop-filter: blur(5px);
+}
+
+#Add-Contact-Section .add-contact-form-container {
+  box-shadow: 5px 5px 15px #d1d9e6, -5px -5px 15px #ffffff;
+}
+
+#Add-Contact-Section .add-contact-form-container .image-upload {
+  position: relative;
+}
+
+#Add-Contact-Section .add-contact-form-container .image-upload::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+  background: rgba(255, 255, 255, 0.786);
+  background-image: url("./assets/images/camera.png");
+  background-size: auto 30px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+  z-index: 9999;
+}
+
+#Add-Contact-Section .add-contact-form-container .image-upload:hover::after {
+  opacity: 1;
+}
+
+#Add-Contact-Section.hideElement {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  #chat-section {
+    padding: 40px 0;
+    column-gap: 10px;
+  }
+
+  #chat-section .container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "chat-box-container";
+  }
+
+  #chat-section .container .recipient-information-container {
+    display: none;
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas: "Contact-Category Contact-List";
+    column-gap: 30px;
+  }
+
+  #Contact-List table thead tr th:nth-child(4),
+  #Contact-List table thead tr th:nth-child(5),
+  #Contact-List table thead tr th:nth-child(2) {
+    display: none;
+  }
+
+  #Contact-List table tbody tr td:nth-child(4),
+  #Contact-List table tbody tr td:nth-child(5),
+  #Contact-List table tbody tr td:nth-child(2) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #chat-section {
+    grid-template-columns: 100%;
+    grid-template-areas: "chat-page-title" "user-chat-list";
+    padding: 20px 0;
+  }
+
+  .chat-box {
+    display: none;
+  }
+
+  .contact-container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "Contact-List";
+    column-gap: 30px;
+  }
+
+  #Contact-Category {
+    display: none;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+
+  70% {
+    transform: translateX(500px);
+  }
+
+  100% {
+    transform: translateX(500px);
+    display: none;
+  }
+}
+
+@keyframes hide {
+  0% {
+    display: block;
+  }
+
+  100% {
+    display: none;
+  }
+}
